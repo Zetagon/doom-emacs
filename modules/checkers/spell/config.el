@@ -38,7 +38,8 @@
      (unless ispell-aspell-data-dir
        (setq ispell-aspell-data-dir
              (ispell-get-aspell-config-value "data-dir")))
-     (unless ispell-personal-dictionary
+     (when (and (not ispell-personal-dictionary)
+                ispell-dictionary)
        (setq ispell-personal-dictionary
              (expand-file-name (concat "ispell/" ispell-dictionary ".pws")
                                doom-etc-dir)))
